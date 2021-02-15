@@ -10,7 +10,7 @@ pod ‘Firebase/Firestore’
 pod ‘FirebaseFirestoreSwift’
 pod ‘Firebase/Storage’
 pod ‘Firebase/Auth’
-
+pod 'Firebase/Messaging'
 
 
   # Pods for iOSGame

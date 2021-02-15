@@ -42,11 +42,6 @@ class DataStore {
             }
             
             if let currentUser = result?.user {
-//                var avatar = "avatarOne"
-//                let avatars = ["avatarOne","avatarTwo","avatarThree"]
-//                if let randomAvatar = avatars.randomElement() {
-//                    avatar = randomAvatar
-//                }
                 let localUser = User.createUser(id: currentUser.uid, username: "minchevskis")
                 self.saveUser(user: localUser, completion: completion)
             }

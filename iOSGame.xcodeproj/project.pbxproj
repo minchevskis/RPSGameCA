@@ -12,12 +12,12 @@
 		5F027AF025D454B600B7BD20 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F027AEF25D454B600B7BD20 /* AvatarView.swift */; };
 		5F027AF325D45F6600B7BD20 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F027AF225D45F6600B7BD20 /* UIColor.swift */; };
 		5F027AF725D80F8900B7BD20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F027AF625D80F8900B7BD20 /* Constants.swift */; };
+		5F027B4225DAEA8200B7BD20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F027B4125DAEA8200B7BD20 /* GoogleService-Info.plist */; };
 		5F82689125C86D7500593999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689025C86D7500593999 /* AppDelegate.swift */; };
 		5F82689325C86D7500593999 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689225C86D7500593999 /* SceneDelegate.swift */; };
 		5F82689825C86D7500593999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F82689625C86D7500593999 /* Main.storyboard */; };
 		5F82689A25C86D7800593999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F82689925C86D7800593999 /* Assets.xcassets */; };
 		5F82689D25C86D7800593999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F82689B25C86D7800593999 /* LaunchScreen.storyboard */; };
-		5F8268A625C86DC500593999 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F8268A525C86DC500593999 /* GoogleService-Info.plist */; };
 		5F8268BE25C8701800593999 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8268BD25C8701800593999 /* DataStore.swift */; };
 		5F8268C325C8704100593999 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8268C225C8704100593999 /* User.swift */; };
 		5F8268C825C875AB00593999 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8268C725C875AB00593999 /* WelcomeViewController.swift */; };
@@ -36,6 +36,8 @@
 		5F027AEF25D454B600B7BD20 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		5F027AF225D45F6600B7BD20 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5F027AF625D80F8900B7BD20 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5F027B4125DAEA8200B7BD20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5F027B5D25DAF46600B7BD20 /* iOSGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSGame.entitlements; sourceTree = "<group>"; };
 		5F82688D25C86D7500593999 /* iOSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82689025C86D7500593999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F82689225C86D7500593999 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +45,6 @@
 		5F82689925C86D7800593999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F82689C25C86D7800593999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F82689E25C86D7800593999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F8268A525C86DC500593999 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5F8268BD25C8701800593999 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		5F8268C225C8704100593999 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5F8268C725C875AB00593999 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		5F82688F25C86D7500593999 /* iOSGame */ = {
 			isa = PBXGroup;
 			children = (
+				5F027B5D25DAF46600B7BD20 /* iOSGame.entitlements */,
 				5F027AF525D80F7C00B7BD20 /* Helpers */,
 				5F027AEA25D4526300B7BD20 /* Views */,
 				5F8268F725CB1C4300593999 /* Extensions */,
@@ -129,7 +131,7 @@
 				5F82689925C86D7800593999 /* Assets.xcassets */,
 				5F82689B25C86D7800593999 /* LaunchScreen.storyboard */,
 				5F82689E25C86D7800593999 /* Info.plist */,
-				5F8268A525C86DC500593999 /* GoogleService-Info.plist */,
+				5F027B4125DAEA8200B7BD20 /* GoogleService-Info.plist */,
 			);
 			path = iOSGame;
 			sourceTree = "<group>";
@@ -253,9 +255,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F8268A625C86DC500593999 /* GoogleService-Info.plist in Resources */,
 				5F82689D25C86D7800593999 /* LaunchScreen.storyboard in Resources */,
 				5F82689A25C86D7800593999 /* Assets.xcassets in Resources */,
+				5F027B4225DAEA8200B7BD20 /* GoogleService-Info.plist in Resources */,
 				5F82689825C86D7500593999 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,14 +473,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = iOSGame/iOSGame.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2LEJV6KBBG;
 				INFOPLIST_FILE = iOSGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeacademy.iOSGame.iOSGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeacademy.rpcgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RPCGameDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -490,14 +496,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = iOSGame/iOSGame.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2LEJV6KBBG;
 				INFOPLIST_FILE = iOSGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeacademy.iOSGame.iOSGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeacademy.rpcgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RPCGameDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
