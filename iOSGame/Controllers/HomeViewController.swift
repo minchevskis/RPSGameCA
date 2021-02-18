@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
                                       preferredStyle: .alert)
         
         let accept = UIAlertAction(title: "Accept", style: .default) { _ in
-            self.declineRequest(gameRequest: gameRequest)
+            self.acceptGameRequest(gameRequest)
         }
         
         let decline = UIAlertAction(title: "Decline", style: .cancel) { _ in
@@ -84,10 +84,46 @@ class HomeViewController: UIViewController {
     private func declineRequest(gameRequest: GameRequest) {
         DataStore.shared.deleteGameRequest(gameRequest: gameRequest)
     }
+    
+    private func acceptGameRequest(_ gameRequest: GameRequest) {
+        guard let localUser = DataStore.shared.localUser else { return }
+        
+        DataStore.shared.getUserWithId(id: gameRequest.from) { [weak self] (user, error) in
+            if let error  = error{
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let user = user {
+                DataStore.shared.createGame(players: [localUser, user]) { (game, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    if let game = game {
+                        self?.enterGame(game)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func enterGame(_ game: Game) {
+        DataStore.shared.removeGameListener()
+        performSegue(withIdentifier: "GameSegue", sender: game)
+    }
+}
+
+//MARK: - Navigation
+extension HomeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "GameSegue" else { return }
+        let gameController = segue.destination as! GameViewController
+        gameController.game = sender as? Game
+    }
 }
 
 //MARK: - UITableView DataSource
-
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return users.count
@@ -140,6 +176,10 @@ extension HomeViewController {
         }
         
         loadingView = LoadingView(me: me, opponent: opponent, request: request)
+        loadingView?.gameAccepted = { [weak self] game in
+            self?.enterGame(game)
+        }
+        
         view.addSubview(loadingView!)
         loadingView?.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview()

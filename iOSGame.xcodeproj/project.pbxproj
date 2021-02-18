@@ -13,6 +13,9 @@
 		5F027AF325D45F6600B7BD20 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F027AF225D45F6600B7BD20 /* UIColor.swift */; };
 		5F027AF725D80F8900B7BD20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F027AF625D80F8900B7BD20 /* Constants.swift */; };
 		5F027B4225DAEA8200B7BD20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F027B4125DAEA8200B7BD20 /* GoogleService-Info.plist */; };
+		5F2DE8A825DD886400BA1287 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8A725DD886400BA1287 /* Game.swift */; };
+		5F2DE8AB25DD917A00BA1287 /* DataStore + Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */; };
+		5F2DE8AE25DD993B00BA1287 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */; };
 		5F82689125C86D7500593999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689025C86D7500593999 /* AppDelegate.swift */; };
 		5F82689325C86D7500593999 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689225C86D7500593999 /* SceneDelegate.swift */; };
 		5F82689825C86D7500593999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F82689625C86D7500593999 /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 		5F027AF625D80F8900B7BD20 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5F027B4125DAEA8200B7BD20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5F027B5D25DAF46600B7BD20 /* iOSGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSGame.entitlements; sourceTree = "<group>"; };
+		5F2DE8A725DD886400BA1287 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore + Game.swift"; sourceTree = "<group>"; };
+		5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5F82688D25C86D7500593999 /* iOSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82689025C86D7500593999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F82689225C86D7500593999 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 			children = (
 				5F8268C225C8704100593999 /* User.swift */,
 				5F8268FC25CB21A600593999 /* GameRequest.swift */,
+				5F2DE8A725DD886400BA1287 /* Game.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +157,7 @@
 			children = (
 				5F8268BD25C8701800593999 /* DataStore.swift */,
 				5F82690025CB225F00593999 /* DataStore+GameRequests.swift */,
+				5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 			children = (
 				5F8268C725C875AB00593999 /* WelcomeViewController.swift */,
 				5F8268CB25C875B400593999 /* HomeViewController.swift */,
+				5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -315,10 +324,12 @@
 				5F027AF325D45F6600B7BD20 /* UIColor.swift in Sources */,
 				5F82689125C86D7500593999 /* AppDelegate.swift in Sources */,
 				5F8268C825C875AB00593999 /* WelcomeViewController.swift in Sources */,
+				5F2DE8AE25DD993B00BA1287 /* GameViewController.swift in Sources */,
 				5F8268FD25CB21A600593999 /* GameRequest.swift in Sources */,
 				5F027AF725D80F8900B7BD20 /* Constants.swift in Sources */,
 				5F027AF025D454B600B7BD20 /* AvatarView.swift in Sources */,
 				5F8268C325C8704100593999 /* User.swift in Sources */,
+				5F2DE8AB25DD917A00BA1287 /* DataStore + Game.swift in Sources */,
 				5F027AEC25D4528900B7BD20 /* LoadingView.swift in Sources */,
 				5F8268CC25C875B400593999 /* HomeViewController.swift in Sources */,
 				5F82690525CB23FF00593999 /* Date + Extensions.swift in Sources */,
@@ -326,6 +337,7 @@
 				5F8268F925CB1C6B00593999 /* UITableViewCell+Extensions.swift in Sources */,
 				5F8268D025C8784000593999 /* UserCell.swift in Sources */,
 				5F82690125CB225F00593999 /* DataStore+GameRequests.swift in Sources */,
+				5F2DE8A825DD886400BA1287 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
