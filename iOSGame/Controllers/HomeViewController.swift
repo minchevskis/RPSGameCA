@@ -10,6 +10,10 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableHolderView: UIView!
+    @IBOutlet weak var btnExpand: UIButton!
+    @IBOutlet weak var tableHolderBottomConstraint: NSLayoutConstraint!
+    
     
     var loadingView: LoadingView?
     var users = [User]()
@@ -111,6 +115,26 @@ class HomeViewController: UIViewController {
     private func enterGame(_ game: Game) {
         DataStore.shared.removeGameListener()
         performSegue(withIdentifier: "GameSegue", sender: game)
+    }
+    
+    @IBAction func onExpand(_ sender: UIButton) {
+        
+        let isExpanded = tableHolderBottomConstraint.constant == 0
+        
+        self.btnExpand.setImage(UIImage(named: isExpanded ? "expandUp" : "expandDown"), for: .normal)
+        
+        tableHolderBottomConstraint.constant = isExpanded ? tableHolderView.frame.height : 0
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut]) {
+            self.view.layoutIfNeeded()
+            //Animating frames instead of constraints
+            // self.tableHolderView.frame.origin = CGPoint(x: tableHolderView.frame.origin.x,
+            //                                             y: -tableHolderView.frame.size.height)
+        } completion: { completed in
+            if completed {
+                //animation is completed
+            }
+        }
     }
 }
 
