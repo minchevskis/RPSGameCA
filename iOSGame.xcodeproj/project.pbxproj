@@ -16,6 +16,7 @@
 		5F2DE8A825DD886400BA1287 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8A725DD886400BA1287 /* Game.swift */; };
 		5F2DE8AB25DD917A00BA1287 /* DataStore + Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */; };
 		5F2DE8AE25DD993B00BA1287 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */; };
+		5F6E3E6625E6B10F0093573C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3E6525E6B10F0093573C /* SplashViewController.swift */; };
 		5F82689125C86D7500593999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689025C86D7500593999 /* AppDelegate.swift */; };
 		5F82689325C86D7500593999 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689225C86D7500593999 /* SceneDelegate.swift */; };
 		5F82689825C86D7500593999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F82689625C86D7500593999 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		5F2DE8A725DD886400BA1287 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore + Game.swift"; sourceTree = "<group>"; };
 		5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		5F6E3E6525E6B10F0093573C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5F82688D25C86D7500593999 /* iOSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82689025C86D7500593999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F82689225C86D7500593999 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				5F8268C725C875AB00593999 /* WelcomeViewController.swift */,
 				5F8268CB25C875B400593999 /* HomeViewController.swift */,
 				5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */,
+				5F6E3E6525E6B10F0093573C /* SplashViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				5F8268CC25C875B400593999 /* HomeViewController.swift in Sources */,
 				5F82690525CB23FF00593999 /* Date + Extensions.swift in Sources */,
 				5F82689325C86D7500593999 /* SceneDelegate.swift in Sources */,
+				5F6E3E6625E6B10F0093573C /* SplashViewController.swift in Sources */,
 				5F8268F925CB1C6B00593999 /* UITableViewCell+Extensions.swift in Sources */,
 				5F8268D025C8784000593999 /* UserCell.swift in Sources */,
 				5F82690125CB225F00593999 /* DataStore+GameRequests.swift in Sources */,

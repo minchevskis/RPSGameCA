@@ -2,7 +2,7 @@
 //  UIColor.swift
 //  SocialMedia
 //
-//  Created by Darko Spasovski on 11/9/20.
+//  Created by Stefan Minchevski on 11/9/20.
 //
 
 import Foundation

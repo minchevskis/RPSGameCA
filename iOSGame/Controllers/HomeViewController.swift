@@ -50,6 +50,7 @@ class HomeViewController: UIViewController {
     
     private func setupTable() {
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
     }
     
@@ -100,6 +101,8 @@ class HomeViewController: UIViewController {
             
             if let user = user {
                 DataStore.shared.createGame(players: [localUser, user]) { (game, error) in
+                    DataStore.shared.deleteGameRequest(gameRequest: gameRequest)
+                    
                     if let error = error {
                         print(error.localizedDescription)
                         return
@@ -112,9 +115,16 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func enterGame(_ game: Game) {
+    private func enterGame(_ game: Game,_ shouldUpdateGame: Bool = false) {
         DataStore.shared.removeGameListener()
-        performSegue(withIdentifier: "GameSegue", sender: game)
+        if shouldUpdateGame {
+            var newGame = game
+            newGame.state = .inprogress
+            DataStore.shared.updateGameStatus(game: newGame)
+            performSegue(withIdentifier: "GameSegue", sender: newGame)
+        } else {
+            performSegue(withIdentifier: "GameSegue", sender: game)
+        }
     }
     
     @IBAction func onExpand(_ sender: UIButton) {
@@ -201,7 +211,7 @@ extension HomeViewController {
         
         loadingView = LoadingView(me: me, opponent: opponent, request: request)
         loadingView?.gameAccepted = { [weak self] game in
-            self?.enterGame(game)
+            self?.enterGame(game, true)
         }
         
         view.addSubview(loadingView!)

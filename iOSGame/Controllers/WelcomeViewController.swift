@@ -11,35 +11,54 @@ import FirebaseAuth
 class WelcomeViewController: UIViewController {
     
     
-
+    @IBOutlet weak var txtUsername: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        txtUsername.layer.cornerRadius = 10
+        txtUsername.layer.masksToBounds = true
+        txtUsername.returnKeyType = .continue
+        txtUsername.delegate = self
+       
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        txtUsername.becomeFirstResponder()
+    }
     
     @IBAction func onContinue(_ sender: UIButton) {
+        guard let username = txtUsername.text?.lowercased() else { return }
         
-        if Auth.auth().currentUser != nil, let id = Auth.auth().currentUser?.uid {
-            DataStore.shared.getUserWithId(id: id) { (user, error) in
-                if let user = user {
-                    DataStore.shared.localUser = user
-                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
-                }
+        DataStore.shared.checkForExistingUsername(username) { [weak self] (exists, _) in
+            if exists {
+                //show error
+                self?.showErrorAlert(username: username)
+                return
             }
-            return
         }
         
-        DataStore.shared.continueWithGuest { (user, error) in
+        DataStore.shared.continueWithGuest(username: username) { [weak self] (user, error) in
             if let user = user {
                 DataStore.shared.localUser = user
-                self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                self?.performSegue(withIdentifier: "HomeSegue", sender: nil)
             }
         }
-        
-        
     }
     
+    func showErrorAlert(username: String) {
+        let alert = UIAlertController(title: "Error",
+                                      message: "\(username) alrady exists. Pleace pick another one",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension WelcomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

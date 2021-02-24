@@ -54,4 +54,39 @@ extension DataStore {
         gameListener?.remove()
         gameListener = nil
     }
+    
+    func setGameStateListener(game: Game, completion: @escaping (_ game: Game?,_ error: Error?) -> Void) {
+        gameStatusListener = database.collection(FirebaseCollections.games.rawValue)
+            .document(game.id)
+            .addSnapshotListener { (document, error) in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+                if let document = document {
+                    do {
+                        let game = try document.data(as: Game.self)
+                        completion(game, nil)
+                    } catch {
+                        print(error.localizedDescription)
+                        completion(nil, error)
+                    }
+                }
+            }
+    }
+    
+    func removeGameStatusListener() {
+        gameStatusListener?.remove()
+        gameStatusListener = nil
+    }
+    
+    func updateGameStatus(game: Game) {
+        let gameRef = database.collection(FirebaseCollections.games.rawValue).document(game.id)
+        
+        do {
+            try gameRef.setData(from: game)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
