@@ -36,7 +36,7 @@ extension DataStore {
                            fromUsername: localUser?.username)
     }
     
-    func checkForExistingGame(toUser: String,
+    func checkForExistingGameRequest(toUser: String,
                               fromUser: String,
                               completion: @escaping(_ exists: Bool,_ error: Error?) -> Void) {
         let gameRequestsRef = database.collection(FirebaseCollections.gameRequests.rawValue)

@@ -32,32 +32,34 @@ class GameViewController: UIViewController {
     
     private func updateGame(updatedGame: Game) {
         lblGameStatus.text = updatedGame.state.rawValue
-        
         game = updatedGame
+        
+        if updatedGame.state == .finished {
+            showAlertWith(title: "Congratz", message: "You Won", isExit: false)
+        }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     @IBAction func onClose(_ sender: UIButton) {
-        let alert = UIAlertController(title: nil,
-                                      message: "Are you sure you want to exit?",
-                                      preferredStyle: .alert)
-        let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
-            //we need to update the other player
-            self?.dismiss(animated: true, completion: nil)
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(exit)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
+        showAlertWith(title: nil, message: "Are you sure you want to exit?")
     }
+        
+        private func showAlertWith(title: String?, message: String?, isExit: Bool = true) {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
+                //we need to update the other player
+                if let game = self?.game, isExit {
+                    DataStore.shared.updateGameStatus(game: game, newState: Game.GameState.finished.rawValue)
+                }
+                self?.dismiss(animated: true, completion: nil)
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(exit)
+            alert.addAction(cancel)
+            present(alert, animated: true, completion: nil)
+        }
+    
 }

@@ -117,10 +117,11 @@ class HomeViewController: UIViewController {
     
     private func enterGame(_ game: Game,_ shouldUpdateGame: Bool = false) {
         DataStore.shared.removeGameListener()
+        
         if shouldUpdateGame {
             var newGame = game
             newGame.state = .inprogress
-            DataStore.shared.updateGameStatus(game: newGame)
+            DataStore.shared.updateGameStatus(game: newGame, newState: Game.GameState.inprogress.rawValue)
             performSegue(withIdentifier: "GameSegue", sender: newGame)
         } else {
             performSegue(withIdentifier: "GameSegue", sender: game)
@@ -170,18 +171,16 @@ extension HomeViewController: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-    
 }
 
 //MARK: - UserCell Delegate
-
 extension HomeViewController: UserCellDelegate {
     func requestGameWith(user: User) {
         guard let userId = user.id,
               let localUser = DataStore.shared.localUser,
               let localUserId = localUser.id else { return }
         
-        DataStore.shared.checkForExistingGame(toUser: userId, fromUser: localUserId) { (exists, error) in
+        DataStore.shared.checkForExistingGameRequest(toUser: userId, fromUser: localUserId) { [weak self] (exists, error) in
             if let error = error {
                 print(error.localizedDescription)
                 print("Error checking for game, try again later")
@@ -189,12 +188,26 @@ extension HomeViewController: UserCellDelegate {
             }
             
             if !exists {
-                DataStore.shared.startGameRequest(userID: userId) { [weak self] (request, error) in
-                    if request != nil {
-                        DataStore.shared.setGameRequestDelitionListener()
-                        self?.setupLoadingView(me: localUser, opponent: user, request: request)
-                    }
-                }
+                self?.checkForOngoingGame(userId: userId, localUser: localUser, opponent: user)
+            }
+        }
+    }
+    
+    func checkForOngoingGame(userId: String, localUser: User, opponent: User) {
+        DataStore.shared.checkForOngoingGameWith(userId: userId) { [weak self] (userInGame, error) in
+            if !userInGame {
+                self?.sendGameRequestsTo(userId: userId, localUser: localUser, opponent: opponent)
+            } else {
+                //Show user already in game alert
+            }
+        }
+    }
+    
+    func sendGameRequestsTo(userId: String, localUser: User, opponent: User) {
+        DataStore.shared.startGameRequest(userID: userId) { [weak self] (request, error) in
+            if request != nil {
+                DataStore.shared.setGameRequestDelitionListener()
+                self?.setupLoadingView(me: localUser, opponent: opponent , request: request)
             }
         }
     }

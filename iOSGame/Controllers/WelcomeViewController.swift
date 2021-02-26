@@ -48,7 +48,7 @@ class WelcomeViewController: UIViewController {
     
     func showErrorAlert(username: String) {
         let alert = UIAlertController(title: "Error",
-                                      message: "\(username) alrady exists. Pleace pick another one",
+                                      message: "\(username) already exists. Please pick another one",
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
