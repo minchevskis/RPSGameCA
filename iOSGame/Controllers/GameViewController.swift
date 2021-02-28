@@ -8,8 +8,18 @@
 import UIKit
 
 class GameViewController: UIViewController {
+    
+    enum HandChoise: Equatable {
+        case rock
+        case scissors
+        case paper
+    }
 
     @IBOutlet weak var lblGameStatus: UILabel!
+    @IBOutlet weak var btnRock: UIButton!
+    @IBOutlet weak var btnScisors: UIButton!
+    @IBOutlet weak var btnPaper: UIButton!
+    @IBOutlet weak var btnRandom: UIButton!
     
     var game: Game?
     
@@ -42,12 +52,13 @@ class GameViewController: UIViewController {
     @IBAction func onClose(_ sender: UIButton) {
         showAlertWith(title: nil, message: "Are you sure you want to exit?")
     }
-        
+        //isExit will be true every time for the first player who exit the game
+        //He needs to update the state to "finished"
         private func showAlertWith(title: String?, message: String?, isExit: Bool = true) {
             let alert = UIAlertController(title: title,
                                           message: message,
                                           preferredStyle: .alert)
-            let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
+            let exit = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
                 //we need to update the other player
                 if let game = self?.game, isExit {
                     DataStore.shared.updateGameStatus(game: game, newState: Game.GameState.finished.rawValue)
@@ -55,11 +66,19 @@ class GameViewController: UIViewController {
                 self?.dismiss(animated: true, completion: nil)
             }
             
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
             alert.addAction(exit)
-            alert.addAction(cancel)
             present(alert, animated: true, completion: nil)
         }
     
+    @IBAction func onRock(_ sender: UIButton) {
+    }
+    
+    @IBAction func onPaper(_ sender: UIButton) {
+    }
+    
+    @IBAction func onScisor(_ sender: UIButton) {
+    }
+    
+    @IBAction func onRandom(_ sender: UIButton) {
+    }
 }

@@ -92,10 +92,19 @@ class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func removeTimers() {
+        closeTimer?.invalidate()
+        closeTimer = nil
+        
+        cancelGameTimer?.invalidate()
+        cancelGameTimer = nil
+    }
+    
     private func setGameListener() {
         DataStore.shared.setGameListener { [weak self](game, _) in
             guard let game = game else { return }
             self?.gameAccepted?(game)
+            self?.removeTimers()
             self?.removeFromSuperview()
         }
     }

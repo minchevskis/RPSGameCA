@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableHolderView: UIView!
     @IBOutlet weak var btnExpand: UIButton!
     @IBOutlet weak var tableHolderBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var avatarHolderView: UIView!
     
     
     var loadingView: LoadingView?
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidRecieveGameRequestNotification"), object: nil)
         setupTable()
         getUsers()
+        setupAvatarView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +48,17 @@ class HomeViewController: UIViewController {
     private func requestPushNotifications() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.requestNotificationsPermision()
+    }
+    
+    private func setupAvatarView() {
+        let avatarView = AvatarView(state: .imageAndName)
+        avatarHolderView.addSubview(avatarView)
+        avatarView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(5)
+        }
+        
+        avatarView.username = DataStore.shared.localUser?.username
+        avatarView.image = DataStore.shared.localUser?.avatarImage
     }
     
     private func setupTable() {
