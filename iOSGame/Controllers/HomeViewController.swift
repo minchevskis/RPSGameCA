@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, AlertPresenter {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHolderView: UIView!
@@ -219,7 +219,6 @@ extension HomeViewController: UserCellDelegate {
     func sendGameRequestsTo(userId: String, localUser: User, opponent: User) {
         DataStore.shared.startGameRequest(userID: userId) { [weak self] (request, error) in
             if request != nil {
-                DataStore.shared.setGameRequestDelitionListener()
                 self?.setupLoadingView(me: localUser, opponent: opponent , request: request)
             }
         }
@@ -235,7 +234,7 @@ extension HomeViewController {
             loadingView = nil
         }
         
-        loadingView = LoadingView(me: me, opponent: opponent, request: request)
+        loadingView = LoadingView(me: me, opponent: opponent, request: request, alertPresenter: self)
         loadingView?.gameAccepted = { [weak self] game in
             self?.enterGame(game, true)
         }
@@ -251,4 +250,6 @@ extension HomeViewController {
         loadingView = nil
     }
 }
+
+
 

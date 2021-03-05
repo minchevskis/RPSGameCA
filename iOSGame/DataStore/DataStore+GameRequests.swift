@@ -87,7 +87,8 @@ extension DataStore {
         gameRequestListener = nil
     }
     
-    func setGameRequestDelitionListener() {
+    func setGameRequestDelitionListener(completion: @escaping() -> Void) {
+        
         if gameRequestDelitionListener != nil {
             removeGameRequestDeletionlistener()
         }
@@ -98,15 +99,7 @@ extension DataStore {
             .collection(FirebaseCollections.gameRequests.rawValue)
             .whereField("to", isEqualTo: localUserID)
             .addSnapshotListener { (snapshot, error) in
-            
-                if let snapshot = snapshot {
-                    
-                    do {
-                        print("Game Requests count: \(snapshot.documents.count)")
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
+                    completion()
             }
     }
     

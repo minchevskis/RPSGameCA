@@ -60,16 +60,15 @@ class LoadingView: UIView {
     private var cancelGameTimer: Timer?
     private var gameRequest: GameRequest?
     private var elapsedSeconds = 0
+    private var alertPresenter: AlertPresenter?
     
     var gameAccepted: ((_ game: Game) -> Void)?
         
-    
-    
-    
-    init(me: User, opponent: User, request: GameRequest?) {
+    init(me: User, opponent: User, request: GameRequest?, alertPresenter: AlertPresenter? = nil) {
         self.me = me
         self.opponent = opponent
         gameRequest = request
+        self.alertPresenter = alertPresenter
         super.init(frame: .zero)
         backgroundColor = UIColor(hex: "#3545C8")
         setupViews()
@@ -82,6 +81,7 @@ class LoadingView: UIView {
         //When superview is not 'nil' then its "addSubview" method
         if newSuperview != nil {
             setupTimers()
+            setGameRequestDelitionListener()
             setGameListener()
         }
         
@@ -98,6 +98,14 @@ class LoadingView: UIView {
         
         cancelGameTimer?.invalidate()
         cancelGameTimer = nil
+    }
+    
+    private func setGameRequestDelitionListener() {
+        DataStore.shared.setGameRequestDelitionListener { [weak self] in
+            self?.removeTimers()
+            self?.removeFromSuperview()
+            self?.alertPresenter?.showGameRequestDeclinedAlert()
+        }
     }
     
     private func setGameListener() {

@@ -17,6 +17,7 @@
 		5F2DE8AB25DD917A00BA1287 /* DataStore + Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */; };
 		5F2DE8AE25DD993B00BA1287 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */; };
 		5F6E3E6625E6B10F0093573C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3E6525E6B10F0093573C /* SplashViewController.swift */; };
+		5F7A3D4F25F2AB34003B342E /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A3D4E25F2AB34003B342E /* AlertPresenter.swift */; };
 		5F82689125C86D7500593999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689025C86D7500593999 /* AppDelegate.swift */; };
 		5F82689325C86D7500593999 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689225C86D7500593999 /* SceneDelegate.swift */; };
 		5F82689825C86D7500593999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F82689625C86D7500593999 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		5F8268FD25CB21A600593999 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8268FC25CB21A600593999 /* GameRequest.swift */; };
 		5F82690125CB225F00593999 /* DataStore+GameRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82690025CB225F00593999 /* DataStore+GameRequests.swift */; };
 		5F82690525CB23FF00593999 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82690425CB23FF00593999 /* Date + Extensions.swift */; };
+		5FC31EF125EF9A08001A6361 /* FightResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,7 @@
 		5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore + Game.swift"; sourceTree = "<group>"; };
 		5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5F6E3E6525E6B10F0093573C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5F7A3D4E25F2AB34003B342E /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		5F82688D25C86D7500593999 /* iOSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82689025C86D7500593999 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F82689225C86D7500593999 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 		5F8268FC25CB21A600593999 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		5F82690025CB225F00593999 /* DataStore+GameRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+GameRequests.swift"; sourceTree = "<group>"; };
 		5F82690425CB23FF00593999 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightResultViewController.swift; sourceTree = "<group>"; };
 		92CA293F91C8A847EB23E484 /* Pods-iOSGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGame.debug.xcconfig"; path = "Target Support Files/Pods-iOSGame/Pods-iOSGame.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F851EB9C2C0B0A4EB1906D /* Pods-iOSGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGame.release.xcconfig"; path = "Target Support Files/Pods-iOSGame/Pods-iOSGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +108,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5F7A3D4D25F2AB24003B342E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5F7A3D4E25F2AB34003B342E /* AlertPresenter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		5F82688425C86D7500593999 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 		5F82688F25C86D7500593999 /* iOSGame */ = {
 			isa = PBXGroup;
 			children = (
+				5F7A3D4D25F2AB24003B342E /* Protocols */,
 				5F027B5D25DAF46600B7BD20 /* iOSGame.entitlements */,
 				5F027AF525D80F7C00B7BD20 /* Helpers */,
 				5F027AEA25D4526300B7BD20 /* Views */,
@@ -167,10 +180,11 @@
 		5F8268C625C8759300593999 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F6E3E6525E6B10F0093573C /* SplashViewController.swift */,
 				5F8268C725C875AB00593999 /* WelcomeViewController.swift */,
 				5F8268CB25C875B400593999 /* HomeViewController.swift */,
 				5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */,
-				5F6E3E6525E6B10F0093573C /* SplashViewController.swift */,
+				5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,7 +343,9 @@
 				5F8268C825C875AB00593999 /* WelcomeViewController.swift in Sources */,
 				5F2DE8AE25DD993B00BA1287 /* GameViewController.swift in Sources */,
 				5F8268FD25CB21A600593999 /* GameRequest.swift in Sources */,
+				5FC31EF125EF9A08001A6361 /* FightResultViewController.swift in Sources */,
 				5F027AF725D80F8900B7BD20 /* Constants.swift in Sources */,
+				5F7A3D4F25F2AB34003B342E /* AlertPresenter.swift in Sources */,
 				5F027AF025D454B600B7BD20 /* AvatarView.swift in Sources */,
 				5F8268C325C8704100593999 /* User.swift in Sources */,
 				5F2DE8AB25DD917A00BA1287 /* DataStore + Game.swift in Sources */,
