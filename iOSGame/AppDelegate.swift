@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import UserNotifications
 import FirebaseMessaging
+import SwiftMessages
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -85,10 +86,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         saveTokenForUser(deviceToken: fcmToken)
     }
+    
+    private func showInAppNotification(requestId: String, fromUsername: <#type#> ) {
+        let view = MessageView.viewFromNib(layout: .cardView)
+        
+        var config = SwiftMessages.Config()
+        config.dimMode = .gray(interactive: true)
+        config.duration = .forever
+        config.presentationStyle = .top
+        
+        view.configureContent(title: "New game request",
+                              body: "",
+                              iconImage: nil,
+                              iconText: nil,
+                              buttonImage: nil,
+                              buttonTitle: "Accept") { _ in
+            
+        }
+        
+        SwiftMessages.show(config: config, view: view)
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        if UIApplication.shared.applicationState == .active {
+            //show swiftMessage
+            guard let dict = notification.request.content.userInfo as? [String: Any],
+                  let requestId = dict["id"] as? String else {
+                return
+            }
+            showInAppNotification(requestId: requestId, fromUsername: <#String#>)
+            completionHandler([.sound])
+            return
+        }
+        
         completionHandler([.alert, .badge, .sound])
     }
     
@@ -98,6 +131,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             guard let dict = response.notification.request.content.userInfo as? [String: Any] else {
                 return
             }
+            
+            if let aps = dict["aps"] as? [String:Any] {
+                // remote notification
+            } else {
+                // local notification
+            }
+            PushNotificationManager.shared.handlePushNotification(dict: dict)
             print(dict)
             print("Did click on notification")
         default:

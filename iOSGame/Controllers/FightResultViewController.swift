@@ -17,7 +17,7 @@ class FightResultViewController: UIViewController {
     @IBOutlet weak var lblLoser: UILabel!
     
     
-    var game:Game?
+    var game: Game?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +28,15 @@ class FightResultViewController: UIViewController {
             let loser = game?.players.filter({ $0.id != winner.id }).first
             lblLoser.text = loser?.username
         }
-        
-        if let gameController = presentingViewController as? GameViewController {
-            gameController.dismiss(animated: true, completion: nil)
-        }
     }
     
 
     @IBAction func onHome(_ sender: UIButton) {
-        
+        if let gameController = presentingViewController as? GameViewController {
+            dismiss(animated: false) {
+                gameController.dismiss(animated: false, completion: nil)
+            }
+        }
     }
     
     @IBAction func onReplay(_ sender: UIButton) {

@@ -97,9 +97,11 @@ extension DataStore {
 
         gameRequestDelitionListener = database
             .collection(FirebaseCollections.gameRequests.rawValue)
-            .whereField("to", isEqualTo: localUserID)
+            .whereField("from", isEqualTo: localUserID)
             .addSnapshotListener { (snapshot, error) in
+                if snapshot?.documents.count == 0 {
                     completion()
+                }
             }
     }
     
@@ -115,7 +117,26 @@ extension DataStore {
             .document(gameRequest.id)
         
         gameRequestRef.delete()
-        
     }
     
+    func getGameRequestWith(id: String, completion: @escaping (_ gameRequest:GameRequest?,_ error: Error?) -> Void) {
+        let gameRequestRef = database.collection(FirebaseCollections.gameRequests.rawValue).document(id)
+        
+        gameRequestRef.getDocument { (document, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            if let document = document {
+                do {
+                    let gameRequest = try document.data(as: GameRequest.self)
+                    completion(gameRequest, nil)
+                } catch {
+                    print(error.localizedDescription)
+                    completion(nil, error)
+                }
+            }
+        }
+    }
 }

@@ -16,6 +16,7 @@
 		5F2DE8A825DD886400BA1287 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8A725DD886400BA1287 /* Game.swift */; };
 		5F2DE8AB25DD917A00BA1287 /* DataStore + Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AA25DD917A00BA1287 /* DataStore + Game.swift */; };
 		5F2DE8AE25DD993B00BA1287 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2DE8AD25DD993B00BA1287 /* GameViewController.swift */; };
+		5F513C3425F697BD00BF75DF /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 5F513C3325F697BD00BF75DF /* SwiftMessages */; };
 		5F6E3E6625E6B10F0093573C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3E6525E6B10F0093573C /* SplashViewController.swift */; };
 		5F7A3D4F25F2AB34003B342E /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A3D4E25F2AB34003B342E /* AlertPresenter.swift */; };
 		5F82689125C86D7500593999 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82689025C86D7500593999 /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 		5F82690125CB225F00593999 /* DataStore+GameRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82690025CB225F00593999 /* DataStore+GameRequests.swift */; };
 		5F82690525CB23FF00593999 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82690425CB23FF00593999 /* Date + Extensions.swift */; };
 		5FC31EF125EF9A08001A6361 /* FightResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */; };
+		5FE3C5F025F939EF005D3963 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3C5EF25F939EF005D3963 /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,7 @@
 		5F82690025CB225F00593999 /* DataStore+GameRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+GameRequests.swift"; sourceTree = "<group>"; };
 		5F82690425CB23FF00593999 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightResultViewController.swift; sourceTree = "<group>"; };
+		5FE3C5EF25F939EF005D3963 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		92CA293F91C8A847EB23E484 /* Pods-iOSGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGame.debug.xcconfig"; path = "Target Support Files/Pods-iOSGame/Pods-iOSGame.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F851EB9C2C0B0A4EB1906D /* Pods-iOSGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGame.release.xcconfig"; path = "Target Support Files/Pods-iOSGame/Pods-iOSGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				573CA37296892F27EEEF9FAA /* Pods_iOSGame.framework in Frameworks */,
+				5F513C3425F697BD00BF75DF /* SwiftMessages in Frameworks */,
 				5F8268F525CB162700593999 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +151,7 @@
 				5F8268C125C8703100593999 /* DataStore */,
 				5F8268C025C8702200593999 /* Models */,
 				5F82689025C86D7500593999 /* AppDelegate.swift */,
+				5FE3C5EF25F939EF005D3963 /* PushNotificationManager.swift */,
 				5F82689225C86D7500593999 /* SceneDelegate.swift */,
 				5F82689625C86D7500593999 /* Main.storyboard */,
 				5F82689925C86D7800593999 /* Assets.xcassets */,
@@ -236,6 +241,7 @@
 			name = iOSGame;
 			packageProductDependencies = (
 				5F8268F425CB162700593999 /* SnapKit */,
+				5F513C3325F697BD00BF75DF /* SwiftMessages */,
 			);
 			productName = iOSGame;
 			productReference = 5F82688D25C86D7500593999 /* iOSGame.app */;
@@ -266,6 +272,7 @@
 			mainGroup = 5F82688425C86D7500593999;
 			packageReferences = (
 				5F8268F325CB162700593999 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				5F513C3225F697BD00BF75DF /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 			);
 			productRefGroup = 5F82688E25C86D7500593999 /* Products */;
 			projectDirPath = "";
@@ -355,6 +362,7 @@
 				5F82689325C86D7500593999 /* SceneDelegate.swift in Sources */,
 				5F6E3E6625E6B10F0093573C /* SplashViewController.swift in Sources */,
 				5F8268F925CB1C6B00593999 /* UITableViewCell+Extensions.swift in Sources */,
+				5FE3C5F025F939EF005D3963 /* PushNotificationManager.swift in Sources */,
 				5F8268D025C8784000593999 /* UserCell.swift in Sources */,
 				5F82690125CB225F00593999 /* DataStore+GameRequests.swift in Sources */,
 				5F2DE8A825DD886400BA1287 /* Game.swift in Sources */,
@@ -569,6 +577,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F513C3225F697BD00BF75DF /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		5F8268F325CB162700593999 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -580,6 +596,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F513C3325F697BD00BF75DF /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F513C3225F697BD00BF75DF /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
+		};
 		5F8268F425CB162700593999 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5F8268F325CB162700593999 /* XCRemoteSwiftPackageReference "SnapKit" */;
