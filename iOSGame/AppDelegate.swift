@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         saveTokenForUser(deviceToken: fcmToken)
     }
     
-    private func showInAppNotification(requestId: String, fromUsername: <#type#> ) {
+    private func showInAppNotification(requestId: String, fromUsername: String ) {
         let view = MessageView.viewFromNib(layout: .cardView)
         
         var config = SwiftMessages.Config()
@@ -96,12 +96,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         config.presentationStyle = .top
         
         view.configureContent(title: "New game request",
-                              body: "",
+                              body: "\(fromUsername) invited you for a game.",
                               iconImage: nil,
                               iconText: nil,
                               buttonImage: nil,
                               buttonTitle: "Accept") { _ in
-            
+            //Click on Accept Button handler
+            SwiftMessages.hide()
+            DataStore.shared.getGameRequestWith(id: requestId) { (request, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if let request = request {
+                    NotificationCenter.default.post(name: Notification.Name("AcceptGameRequest"),
+                                                    object: nil,
+                                                    userInfo: ["GameRequest":request])
+                }
+            }
         }
         
         SwiftMessages.show(config: config, view: view)
@@ -109,15 +121,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         if UIApplication.shared.applicationState == .active {
             //show swiftMessage
-            guard let dict = notification.request.content.userInfo as? [String: Any],
-                  let requestId = dict["id"] as? String else {
-                return
-            }
-            showInAppNotification(requestId: requestId, fromUsername: <#String#>)
+            guard let dict = notification.request.content.userInfo as? [String:Any],
+                  let requestId = dict["id"] as? String,
+                  let fromUsername = dict["fromUsername"] as? String else { return }
+            showInAppNotification(requestId: requestId, fromUsername: fromUsername)
             completionHandler([.sound])
             return
         }

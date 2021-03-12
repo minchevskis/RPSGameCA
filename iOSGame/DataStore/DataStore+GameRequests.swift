@@ -28,12 +28,13 @@ extension DataStore {
     }
     
     private func createGameRequest(toUser: String, id: String) -> GameRequest? {
-        guard let localUserID = localUser?.id else { return nil }
+        guard let localUser = DataStore.shared.localUser,
+              let localUserID = localUser.id else { return nil }
         return GameRequest(id: id,
                            from: localUserID,
                            to: toUser,
                            createdAt: Date().toMiliseconds(),
-                           fromUsername: localUser?.username)
+                           fromUsername: localUser.username)
     }
     
     func checkForExistingGameRequest(toUser: String,
@@ -73,7 +74,11 @@ extension DataStore {
                     
                     do {
                         let gameRequest = try document.data(as: GameRequest.self)
-                        NotificationCenter.default.post(name: Notification.Name("DidRecieveGameRequestNotification"), object: nil, userInfo: ["GameRequest":gameRequest as Any])
+                        NotificationCenter
+                            .default
+                            .post(name: Notification.Name("DidRecieveGameRequestNotification"),
+                                                        object: nil,
+                                                        userInfo: ["GameRequest":gameRequest as Any])
                         print("New GameRequest with" + (gameRequest?.from ?? ""))
                     } catch {
                         print(error.localizedDescription)

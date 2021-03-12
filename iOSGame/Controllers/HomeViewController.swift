@@ -24,6 +24,16 @@ class HomeViewController: UIViewController, AlertPresenter {
         requestPushNotifications()
         title = "Welcome " + (DataStore.shared.localUser?.username ?? "")
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidRecieveGameRequestNotification"), object: nil)
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name("AcceptGameRequest"),
+                                               object: nil,
+                                               queue: nil) { [weak self] (notification) in
+            guard let userInfo = notification.userInfo as? [String:Any],
+                  let gameRequest = userInfo["GameRequest"] as? GameRequest else { return }
+            
+            self?.acceptGameRequest(gameRequest)
+        }
+        
         setupTable()
         getUsers()
         setupAvatarView()

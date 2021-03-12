@@ -16,6 +16,12 @@ class GameViewController: UIViewController {
     @IBOutlet weak var btnPaper: UIButton!
     @IBOutlet weak var btnRandom: UIButton!
     
+    @IBOutlet weak var opponentHandImage: UIImageView!
+    @IBOutlet weak var myHandImage: UIImageView!
+    
+    @IBOutlet weak var myHandBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var opponentHandTopConstraint: NSLayoutConstraint!
+    
     var game: Game?
     
     override func viewDidLoad() {
@@ -47,14 +53,17 @@ class GameViewController: UIViewController {
         shouldEnableButtons(enable: updatedGame.state == .inprogress)
         lblGameStatus.text = updatedGame.state.rawValue
         game = updatedGame
-        checkForWinner(game: updatedGame)
+        animateMoves(game: updatedGame)
+        return
         
-        if updatedGame.state == .finished && game?.winer == nil {
-            DataStore.shared.removeGameListener()
-            game?.winer = updatedGame.players.filter({ $0.id == DataStore.shared.localUser?.id }).first
-            DataStore.shared.updateGameMoves(game: self.game!)
-            continueToResults()
-        }
+//        checkForWinner(game: updatedGame)
+//
+//        if updatedGame.state == .finished && game?.winer == nil {
+//            DataStore.shared.removeGameListener()
+//            game?.winer = updatedGame.players.filter({ $0.id == DataStore.shared.localUser?.id }).first
+//            DataStore.shared.updateGameMoves(game: self.game!)
+//            continueToResults()
+//        }
     }
     
     private func shouldEnableButtons(enable: Bool) {
@@ -63,6 +72,67 @@ class GameViewController: UIViewController {
         btnRandom.isEnabled = enable
         btnScisors.isEnabled = enable
     }
+    
+    private func animateMoves(game: Game) {
+        guard let localUserId = DataStore.shared.localUser?.id,
+              let opponentUser = game.players.filter ({ $0.id != localUserId }).first,
+              let opponentUserId = opponentUser.id else { return }
+        
+        let moves = game.moves
+        let myMove = moves[localUserId]
+        let otherMove = moves[opponentUserId]
+        
+        if myMove != .idle && otherMove != .idle {
+            // We will animate both hands at the same time back on board
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                
+                self.myHandBottomConstraint.constant = Moves.minimumY(isOpponent: false)
+                self.opponentHandTopConstraint.constant = Moves.minimumY(isOpponent: true)
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                } completion: { (_) in
+                    // Homework
+                    // Winner hand should go little further and animate blood beneath
+                    
+                }
+            }
+            return
+        }
+        
+        animateMyHandTo(move: myMove)
+        animateOtherHandTo(move: otherMove)
+    }
+    
+    private func animateMyHandTo(move: Moves?) {
+        guard let move = move, move != .idle else { return }
+        
+        myHandBottomConstraint.constant = Moves.maximumY
+        UIView.animate(withDuration: 0.2) {
+            // closure for animation
+            self.view.layoutIfNeeded()
+        } completion: { (finished) in
+            // closure for when animation is done, finished flag argument (flag == bool)
+            if finished {
+                self.myHandImage.image = UIImage(named: move.imageName(isOpponent: false))
+            }
+        }
+    }
+    
+    private func animateOtherHandTo(move: Moves?) {
+        guard let move = move, move != .idle else { return }
+
+        opponentHandTopConstraint.constant = Moves.maximumY
+        UIView.animate(withDuration: 0.2) {
+            // closure for animation
+            self.view.layoutIfNeeded()
+        } completion: { (finished) in
+            // closure for when animation is done, finished flag argument (flag == bool)
+            if finished {
+                self.opponentHandImage.image = UIImage(named: move.imageName(isOpponent: true))
+            }
+        }
+    }
+
     
     private func checkForWinner(game:Game) {
         guard let localUserId = DataStore.shared.localUser?.id,
