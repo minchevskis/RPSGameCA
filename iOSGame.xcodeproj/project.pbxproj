@@ -36,6 +36,7 @@
 		5F82690525CB23FF00593999 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82690425CB23FF00593999 /* Date + Extensions.swift */; };
 		5FC31EF125EF9A08001A6361 /* FightResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */; };
 		5FE3C5F025F939EF005D3963 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3C5EF25F939EF005D3963 /* PushNotificationManager.swift */; };
+		5FEC125C2612363F000B369B /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEC125B2612363F000B369B /* DeviceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		5F82690425CB23FF00593999 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		5FC31EF025EF9A08001A6361 /* FightResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightResultViewController.swift; sourceTree = "<group>"; };
 		5FE3C5EF25F939EF005D3963 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		5FEC125B2612363F000B369B /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		92CA293F91C8A847EB23E484 /* Pods-iOSGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGame.debug.xcconfig"; path = "Target Support Files/Pods-iOSGame/Pods-iOSGame.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F851EB9C2C0B0A4EB1906D /* Pods-iOSGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGame.release.xcconfig"; path = "Target Support Files/Pods-iOSGame/Pods-iOSGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5F027AF625D80F8900B7BD20 /* Constants.swift */,
+				5FEC125B2612363F000B369B /* DeviceType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -153,7 +156,7 @@
 				5F82689025C86D7500593999 /* AppDelegate.swift */,
 				5FE3C5EF25F939EF005D3963 /* PushNotificationManager.swift */,
 				5F82689225C86D7500593999 /* SceneDelegate.swift */,
-				5F82689625C86D7500593999 /* Main.storyboard */,
+				5FEC125E26123725000B369B /* View */,
 				5F82689925C86D7800593999 /* Assets.xcassets */,
 				5F82689B25C86D7800593999 /* LaunchScreen.storyboard */,
 				5F82689E25C86D7800593999 /* Info.plist */,
@@ -210,6 +213,14 @@
 				5F027AF225D45F6600B7BD20 /* UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5FEC125E26123725000B369B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F82689625C86D7500593999 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7B82143B82A4A5C6E52D22C5 /* Pods */ = {
@@ -352,6 +363,7 @@
 				5F8268FD25CB21A600593999 /* GameRequest.swift in Sources */,
 				5FC31EF125EF9A08001A6361 /* FightResultViewController.swift in Sources */,
 				5F027AF725D80F8900B7BD20 /* Constants.swift in Sources */,
+				5FEC125C2612363F000B369B /* DeviceType.swift in Sources */,
 				5F7A3D4F25F2AB34003B342E /* AlertPresenter.swift in Sources */,
 				5F027AF025D454B600B7BD20 /* AvatarView.swift in Sources */,
 				5F8268C325C8704100593999 /* User.swift in Sources */,
