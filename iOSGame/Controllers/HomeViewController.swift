@@ -21,6 +21,13 @@ class HomeViewController: UIViewController, AlertPresenter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        #if targetEnvironment(simulator)
+        DataStore.shared.setGameRequestListener()
+        #else
+        requestPushNotifications()
+        #endif
+        
         requestPushNotifications()
         title = "Welcome " + (DataStore.shared.localUser?.username ?? "")
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidRecieveGameRequestNotification"), object: nil)
@@ -51,7 +58,13 @@ class HomeViewController: UIViewController, AlertPresenter {
             PushNotificationManager.shared.clearVariables()
         }
         
-//        DataStore.shared.setGameRequestListener()
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        appDelegate?.checkForEnabledpushNotifications(completion: { enabled in
+            if !enabled {
+                DataStore.shared.setGameRequestListener()
+            }
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
